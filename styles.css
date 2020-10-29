@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    background-color: firebrick;
+    border-collapse: collapse;
+}
+
+.container {
+    height: 500px;
+    width: 500px;
+    background: grey;
+    margin: 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gridSquare {
+    border: 1px solid black;
+    margin: 0px;
+    padding: 0px;
+}
+
+.clear-button {
+    width: 10%;
+    height: 70px;
+    margin: 20px 45%;
+}
