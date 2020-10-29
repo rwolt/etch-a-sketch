@@ -27,6 +27,9 @@ function removeSquares () {
 
 function resetGrid() {
     let gridSize = Number(prompt('Choose a grid size between 1 and 100', 16));
+    while (gridSize < 1 || gridSize > 100) {
+        gridSize = Number(prompt('Choose a grid size between 1 and 100', 16));
+    }
     let squareSize = 100 / gridSize;
     removeSquares();
     drawSquares(gridSize, squareSize);

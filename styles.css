@@ -4,14 +4,17 @@
 
 body {
     background-color: firebrick;
-    border-collapse: collapse;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container {
     height: 500px;
     width: 500px;
     background: grey;
-    margin: 50px auto;
+    margin: 40px auto;
     display: flex;
     flex-wrap: wrap;
 }
@@ -23,7 +26,16 @@ body {
 }
 
 .clear-button {
-    width: 10%;
-    height: 70px;
-    margin: 20px 45%;
+    width: 140px;
+    height: 60px;
+    text-indent: -9999px;
+    margin-top: 70px;
+    background: firebrick;
+    background-image: url(images/clear_btn.png);
+    background-size: cover;
+    background-position: center;
+    border: 2px solid gold;
+    border-radius: 5px;
+    color: gold;
+    font-size: 1.6em;
 }
