@@ -3,18 +3,27 @@
 }
 
 body {
-    background-color: firebrick;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 4.0em;
+    font-family: monospace;
+    font-weight: bold;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+
 }
 
 .container {
-    height: 500px;
-    width: 500px;
-    background: grey;
-    margin: 40px auto;
+    height: 750px;
+    width: 750px;
+    margin-top: 20px;
+    margin-right: 160px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -25,17 +34,31 @@ body {
     padding: 0px;
 }
 
-.clear-button {
-    width: 140px;
+.controls {
+    width: 120px;
+    height: 750px;
+    margin: 20px 40px;
+    display: relative;
+}
+
+.nav {
+    display: absolute;
+    top: 20px;
+}
+.buttons {
+    position: absolute;
+    bottom: 350px;
+    width: 120px;
+}
+
+button {
+    width: 120px;
     height: 60px;
-    text-indent: -9999px;
-    margin-top: 70px;
-    background: firebrick;
-    background-image: url(images/clear_btn.png);
-    background-size: cover;
-    background-position: center;
-    border: 2px solid gold;
-    border-radius: 5px;
-    color: gold;
-    font-size: 1.6em;
+    text-align: center;
+    border: none;
+    margin: 10px;
+
+}
+button:hover {
+    cursor: pointer;
 }
