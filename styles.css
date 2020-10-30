@@ -47,7 +47,7 @@ h1 {
 }
 .buttons {
     position: absolute;
-    bottom: 350px;
+    top: 350px;
     width: 120px;
 }
 
