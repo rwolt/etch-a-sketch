@@ -9,6 +9,7 @@ function createSquare(n) {
 function drawSquares (gridSize, squareSize) {
     for (i = 0; i < (gridSize ** 2); i++) {
             let square = createSquare(squareSize);
+            square.id = i;
             container.appendChild(square); 
     }
 }
@@ -31,30 +32,43 @@ function etch () {
     let squares = document.querySelectorAll('.gridSquare');
     for (let square of squares) {
         square.addEventListener('mouseover', () => {
-            square.style.backgroundColor = '#000'; })
-    }       
+            square.style.backgroundColor = '#000'; 
+        });
+    }    
 }
 
 function colors() {
     let squares = document.querySelectorAll('.gridSquare');
     for (let square of squares) {
         square.addEventListener('mouseover', () => {
-            square.style.backgroundColor = randomRGB(); })
+            square.style.backgroundColor = randomRGB();
+            square.style.filter = 'brightness(100%)';
+         });
     }
 }
 
 function shades() {
     let squares = document.querySelectorAll('.gridSquare');
     for (let square of squares) {
-        square.addEventListener('mouseover', () =>{
-            currentShade = square.style.backgroundColor; 
-            console.log(currentShade);
-            let r = currentShade.slice(4, 6);
-            let g = currentShade.slice(8, 10);
-            console.log(`${r} ${g}`);
-        });
+        square.setAttribute('count', 0);   
+       // square.style.backgroundColor = square.style.backgroundColor;
+       
+
+
+        square.addEventListener('mouseover', () => {   
+                let n = square.getAttribute('count');
+                n++;
+                square.setAttribute('count', n);
+                if (n > 0 && n <= 10) {
+                    square.style.filter = `brightness(${(10 - n) / 10})`;
+                } else {
+                    square.style.filter = 'brightness(0);'
+                }
+        });   
     }
 }
+
+
 
 function randomRGB () {
     let r = Math.floor(Math.random() * 255);
@@ -80,8 +94,9 @@ let gridBtn = document.querySelector('.grid-size');
 let colorBtn = document.querySelector('.rgb');
 let shadeBtn = document.querySelector('.shading');
 let container = document.querySelector(".container");
+
 resetGrid();
-colors();
+etch();
 
 
 clearBtn.addEventListener('click', clearSquares);
