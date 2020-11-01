@@ -1,8 +1,33 @@
+function etchHandler (e) {
+        e.target.style.backgroundColor = '#000'; 
+}
+
+function rgbHandler (e) {
+        e.target.style.backgroundColor = randomRGB();
+        e.target.style.filter = 'brightness(100%)';
+}
+
+function shadeHandler (e) {
+        let n = e.target.getAttribute('count');
+        n++;
+        e.target.setAttribute('count', n);
+        if (e.target.style.backgroundColor == '#000') {
+            e.target.style.filter = 'brightness(0)';
+        }
+        else if (n > 0 && n <= 10) {
+            e.target.style.filter = `brightness(${(10 - n) / 10})`;
+        } else {
+            e.target.style.filter = 'brightness(0)';
+        }
+}
+
+
 function createSquare(n) {
     let square = document.createElement('div');
     square.style.height = `${n}%`;
     square.style.width = `${n}%`;
     square.className = 'gridSquare';
+    square.setAttribute('count', 0);  
     return square;
 }
 
@@ -31,44 +56,29 @@ function clearSquares(){
 function etch () {
     let squares = document.querySelectorAll('.gridSquare');
     for (let square of squares) {
-        square.addEventListener('mouseover', () => {
-            square.style.backgroundColor = '#000'; 
-        });
+        square.removeEventListener('mouseover', shadeHandler);
+        square.removeEventListener('mouseover', rgbHandler);
+        square.addEventListener('mouseover', etchHandler);
     }    
 }
 
 function colors() {
     let squares = document.querySelectorAll('.gridSquare');
     for (let square of squares) {
-        square.addEventListener('mouseover', () => {
-            square.style.backgroundColor = randomRGB();
-            square.style.filter = 'brightness(100%)';
-         });
+        square.removeEventListener('mouseover', etchHandler);
+        square.removeEventListener('mouseover', shadeHandler);
+        square.addEventListener('mouseover', rgbHandler);
     }
 }
 
 function shades() {
     let squares = document.querySelectorAll('.gridSquare');
-    for (let square of squares) {
-        square.setAttribute('count', 0);   
-       // square.style.backgroundColor = square.style.backgroundColor;
-       
-
-
-        square.addEventListener('mouseover', () => {   
-                let n = square.getAttribute('count');
-                n++;
-                square.setAttribute('count', n);
-                if (n > 0 && n <= 10) {
-                    square.style.filter = `brightness(${(10 - n) / 10})`;
-                } else {
-                    square.style.filter = 'brightness(0);'
-                }
-        });   
+    for (let square of squares) { 
+        square.removeEventListener('mouseover', rgbHandler);
+        square.removeEventListener('mouseover', etchHandler);
+        square.addEventListener('mouseover', shadeHandler);   
     }
 }
-
-
 
 function randomRGB () {
     let r = Math.floor(Math.random() * 255);
